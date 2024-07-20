@@ -1,0 +1,107 @@
+<div class="container">
+
+    <a routerLink="/guestProfile">Profile   </a>
+    <a routerLink="/guestRestourants">Restourants   </a>
+    <a routerLink="/guestReservations">Reservations   </a>
+    <a routerLink="/guestDelivery">Food Delivery   </a>
+    <a routerLink="">Logout   </a>
+    <br>
+
+    <br>
+    
+        
+    <label for="name">name: {{currentRestourant.name}}</label>
+    <br>
+    
+
+<!-- Name -->
+
+    <label for="address">address: {{currentRestourant.address}}</label>
+
+    <br>
+
+<!-- Surname -->
+
+    <label for="restourantType">restourant type: {{currentRestourant.type}}</label>
+
+
+
+    <br>
+
+<!-- Address -->
+
+    <label for="telephone">telephone: {{currentRestourant.telephone}}</label>
+    
+    <br>
+
+
+
+    <form (ngSubmit)="submitForm()">
+    
+    <label for="date">Select Date:</label>
+    <input type="date" id="date" name="date" [(ngModel)]="selectedDate"><br><br>
+    
+    <label for="time">Select Time:</label>
+    <input type="time" id="time" name="time" [(ngModel)]="selectedTime"><br><br>
+    
+    <label for="numOfPersons">Number of persons:</label>
+    <input type="text" id="numOfPersons" name="numOfPersons" [(ngModel)]="numOfPersons"><br><br>
+
+    <label for="additionalInfo">Additional Info:</label>
+    <input type="text" id="additionalInfo" name="additionalInfo" [(ngModel)]="additionalInfo"><br><br>
+    
+    <button type="submit">Make reservation</button>
+
+    <div *ngIf="registrationMessage" class="registration-message">
+        {{ registrationMessage }}
+    </div>
+    </form>
+
+
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Ingredients</th>
+        <th>Picture</th>
+        <th>Amount</th>
+        <th>Add to basket</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let dish of menuList">
+        <td>{{ dish.name }}</td>
+        <td>{{ dish.price }}</td>
+        <td>{{ dish.ingredients }}</td>
+        <td><img [src]="dish.image"></td>
+
+        <td><input type="text" [(ngModel)]="orderAmounts[dish.uniqueName]"></td>
+        <td><button (click)="addItemInput(dish.uniqueName)">Add to baseket</button></td>
+
+        </tr>
+    </tbody>
+    </table>
+
+    <br>
+    <br>
+
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Name</th>
+        <th>Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of orderProducts">
+        <td>{{ product.uniqueName }}</td>
+        <td>{{ product.amount }}</td>
+        </tr>
+    </tbody>
+    </table>
+
+    <button (click)="makeOrder()">Make order</button>
+    {{ orderMessage }}
+
+</div>

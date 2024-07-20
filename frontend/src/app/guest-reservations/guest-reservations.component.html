@@ -1,0 +1,50 @@
+<div class="container">
+    <a routerLink="/guestProfile">Profile   </a>
+    <a routerLink="/guestRestourants">Restourants   </a>
+    <a routerLink="/guestReservations">Reservations   </a>
+    <a routerLink="/guestDelivery">Food Delivery   </a>
+    <a routerLink="">Logout   </a>
+    <br>
+
+    <table class="table table-striped">
+    <thead>
+        <tr>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Restaurant</th>
+        <th>Address</th>
+        <th>Additional Comment</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let reservation of currentReservations">
+        <td>{{ reservation.date }}</td>
+        <td>{{ reservation.date }}</td>
+        <td>{{ reservation.restourant }}</td>
+        <td>{{ reservation.restourantAddress }}</td>
+        <td>{{ reservation.additionalInfo }}</td>
+        </tr>
+    </tbody>
+    </table>
+    
+    <br>
+    <br>
+
+    <table class="table table-striped">
+    <thead>
+        <tr>
+        <th>Date</th>
+        <th>Restaurant</th>
+        <th>Additional Comment</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let reservation of pastReservations">
+        <td>{{ reservation.date }}</td>
+        <td>{{ reservation.restourant }}</td>
+        <td>{{ reservation.additionalInfo }}</td>
+        </tr>
+    </tbody>
+    </table>
+
+</div>

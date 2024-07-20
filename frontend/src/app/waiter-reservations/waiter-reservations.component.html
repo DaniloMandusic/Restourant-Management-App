@@ -1,0 +1,79 @@
+<div class="container">
+  
+    <a routerLink="/waiterProfile">Profile   </a>
+    <a routerLink="/waiterReservations">Reservations   </a>
+    <a routerLink="/waiterDelivery">Food Delivery   </a>
+    <a routerLink="/waiterStatistics">Statistics   </a>
+    <a routerLink="">Logout   </a>
+    <br>
+
+    <canvas #canvas width="600" height="100"></canvas>
+    <br>
+
+    <table class="table table-striped">
+    <thead>
+        <tr>
+        <th>User</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Number Of Persons</th>
+        <th>Additional Info</th>
+        <th>Table</th>
+        <th>Action</th>
+        <th>Decline Comment</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let reservation of pendingReservations">
+        <td>{{ reservation.user }}</td>
+        <td>{{ reservation.date }}</td>
+        <td>{{ reservation.time }}</td>
+        <td>{{ reservation.numOfPersons }}</td>
+        <td>{{ reservation.additionalInfo }}</td>
+        <td> 
+          <select [(ngModel)]="selectedNumbers[reservation.user+reservation.date+reservation.time]">
+            <option *ngFor="let table of freeTables" [value]="table">{{ table }}</option>
+          </select> </td>
+        <td> 
+            <button (click)="acceptReservation(reservation)" >Accept</button>
+            <button (click)="declineReservation(reservation, declineCommentInput.value)" >Decline</button>
+        </td>
+        <td> <input #declineCommentInput type="text" placeholder="Decline comment"> </td>
+        </tr>
+    </tbody>
+    </table>
+        
+        <br>
+        <br>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                <th>User</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Number Of Persons</th>
+                <th>Additional Info</th>
+                <th>Table</th>
+                <th>Action</th>
+                </tr>
+            </thead>
+        <tbody>
+            <tr *ngFor="let reservation of acceptedReservations">
+            <td>{{ reservation.user }}</td>
+            <td>{{ reservation.date }}</td>
+            <td>{{ reservation.time }}</td>
+            <td>{{ reservation.numOfPersons }}</td>
+            <td>{{ reservation.additionalInfo }}</td>
+            <td>{{ reservation.table }}</td>
+            <td> 
+                <button (click)="confirmArrival(reservation)" [disabled]="!isWithinLast30Minutes(reservation.date,reservation.time)">Came</button>
+                <button (click)="confirmNoArrival(reservation)" [disabled]="!isWithinLast30Minutes(reservation.date,reservation.time)">Didnt came</button>
+            </td>
+            </tr>
+        </tbody>
+        </table>
+
+    <h1>{{registrationMessage}}</h1>
+
+</div>

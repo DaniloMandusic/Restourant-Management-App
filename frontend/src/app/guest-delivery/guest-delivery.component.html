@@ -1,0 +1,51 @@
+
+<div class="container">
+  
+    <a routerLink="/guestProfile">Profile   </a>
+    <a routerLink="/guestRestourants">Restourants   </a>
+    <a routerLink="/guestReservations">Reservations   </a>
+    <a routerLink="/guestDelivery">Food Delivery   </a>
+    <a routerLink="">Logout   </a>
+    <br>
+
+    <table class="table table-striped">
+    <thead>
+        <tr>
+        <th>Restourant</th>
+        <th>Status</th>
+        <th>Approximate time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let order of approvedOrders">
+        <td>{{ order.restourant }}</td>
+        <td>{{ order.status }}</td>
+        <td>{{ order.approximateTime }}</td>
+        </tr>
+    </tbody>
+    </table>
+        
+        <br>
+        <br>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+            <th>Restourant</th>
+            <th>Status</th>
+            <th>Approximate time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let order of finishedOrders">
+            <td>{{ order.restourant }}</td>
+            <td>{{ order.status }}</td>
+            <td>{{ order.approximateTime }}</td>
+            </tr>
+        </tbody>
+        </table>
+        
+    <br>
+    <br>
+
+</div>

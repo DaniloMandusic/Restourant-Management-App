@@ -1,0 +1,54 @@
+<div class="container">
+
+    <label for="username">ukupan broj restorana: {{restourantCount}}</label>
+    <br>
+    <br>
+    <label for="username">ukupan broj gostiju: {{guestCount}}</label>
+    <br>
+    <br>
+    <label for="username">broj rezervacija u proteklih 24 sata: {{reservationCount24}}</label>
+    <br>
+    <br>
+    <label for="username">broj odrzanih casova u proteklih nedelju dana: {{reservationCount7}}</label>
+    <br>
+    <br>
+    <label for="username">broj odrzanih casova u proteklih mesec dana: {{reservationCount30}}</label>
+    <br>
+    <br>
+
+    <input type="text" placeholder="Search" [(ngModel)]="searchInput" (input)="applyFilter()">
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+        
+        <ng-container matColumnDef="restourant">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Naziv </th>
+            <td mat-cell *matCellDef="let restourantWaiter"> {{ restourantWaiter.restourant }} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="restourantAdress">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Adresa </th>
+            <td mat-cell *matCellDef="let restourantWaiter"> {{ restourantWaiter.restourantAdress }} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="restourantType">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Tip </th>
+            <td mat-cell *matCellDef="let restourantWaiter"> {{ restourantWaiter.restourantType }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="waiterName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Ime konobara </th>
+            <td mat-cell *matCellDef="let restourantWaiter"> {{ restourantWaiter.waiterName }} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="waiterSurname">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Prezime konobara </th>
+            <td mat-cell *matCellDef="let restourantWaiter"> {{ restourantWaiter.waiterSurname }} </td>
+        </ng-container>
+        
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+    
+</div>

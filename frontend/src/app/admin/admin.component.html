@@ -1,0 +1,144 @@
+<div class="container">
+  
+    <table>
+    <thead>
+        <tr>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Security Question</th>
+        <th>Security Answer</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Gender</th>
+        <th>Address</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Profile Type</th>
+        <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of waiters; let i = index">
+        <td>
+            {{user.username}}
+        </td>
+        <td>
+            <input [(ngModel)]="user.password" type="text" />
+        </td>
+        <td>
+            <input [(ngModel)]="user.securityQuestion" type="text" />
+        </td>
+        <td>
+            <input [(ngModel)]="user.securityAnswer" type="text" />
+        </td>
+        <td>
+            <input [(ngModel)]="user.name" type="text" />
+        </td>
+        <td>
+            <input [(ngModel)]="user.surname" type="text" />
+        </td>
+        <td>
+            <input [(ngModel)]="user.gender" type="text" />
+        </td>
+        <td>
+            <input [(ngModel)]="user.address" type="text" />
+        </td>
+        <td>
+            <input [(ngModel)]="user.phoneNumber" type="text" />
+        </td>
+        <td>
+            <input [(ngModel)]="user.email" type="text" />
+        </td>
+        <td>
+            <input [(ngModel)]="user.profileType" type="text" />
+        </td>
+        <td>
+            <button (click)="printUser(user)">Change</button>
+        </td>
+        </tr>
+    </tbody>
+    </table>
+
+    <br><br>
+
+    <table>
+        <thead>
+            <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of guests; let i = index">
+            <td>
+                {{user.username}}
+            </td>
+            <td>
+                <input [(ngModel)]="user.password" type="text" />
+            </td>
+            <td>
+                <input [(ngModel)]="user.securityQuestion" type="text" />
+            </td>
+            <td>
+                <input [(ngModel)]="user.securityAnswer" type="text" />
+            </td>
+            <td>
+                <input [(ngModel)]="user.name" type="text" />
+            </td>
+            <td>
+                <input [(ngModel)]="user.surname" type="text" />
+            </td>
+            <td>
+                <input [(ngModel)]="user.gender" type="text" />
+            </td>
+            <td>
+                <input [(ngModel)]="user.address" type="text" />
+            </td>
+            <td>
+                <input [(ngModel)]="user.phoneNumber" type="text" />
+            </td>
+            <td>
+                <input [(ngModel)]="user.email" type="text" />
+            </td>
+            <td>
+                <input [(ngModel)]="user.profileType" type="text" />
+            </td>
+            <td>
+                <button (click)="printUser(user)">Change</button>
+            </td>
+            </tr>
+        </tbody>
+        </table>
+
+        <br><br>
+
+        <table>
+            <thead>
+                <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let restourant of restourants; let i = index">
+                    <td>
+                        {{restourant.name}}
+                    </td>
+                    <td>
+                        <input [(ngModel)]="restourant.type" type="text" />
+                    </td>
+                    <td>
+                        <input [(ngModel)]="restourant.address" type="text" />
+                    </td>
+                    <td>
+                        <button (click)="changeRestourant(restourant)">Change</button>
+                    </td>
+                
+                </tr>
+            </tbody>
+            </table>
+
+
+</div>

@@ -1,0 +1,42 @@
+<div class="container">
+  
+    <a routerLink="/waiterProfile">Profile   </a>
+    <a routerLink="/waiterReservations">Reservations   </a>
+    <a routerLink="/waiterDelivery">Food Delivery   </a>
+    <a routerLink="/waiterStatistics">Statistics   </a>
+    <a routerLink="">Logout   </a>
+    <br>
+
+    <table class="table table-striped">
+    <thead>
+        <tr>
+        <th>User</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Products</th>
+        <th>Approximate Time</th>
+        <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let order of notApprovedOrders">
+        <td>{{ order.user }}</td>
+        <td>{{ order.date }}</td>
+        <td>{{ order.time }}</td>
+        <td>{{ order.products }}</td>
+        <td> 
+            <select [(ngModel)]="selectedOptions[order.user+order.date+order.time]">
+                <option value="">Select an option</option>
+                <option value="20-30">20-30</option>
+                <option value="30-40">30-40</option>
+                <option value="50-60">50-60</option>
+            </select>
+        <td> 
+            <button (click)="onConfirm(order)" [disabled]="isConfirmDisabled(order)">Confirm</button>
+            <button (click)="onDecline(order)" >Decline</button>
+        </td>
+        </tr>
+    </tbody>
+    </table>
+
+</div>
